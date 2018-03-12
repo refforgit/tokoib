@@ -7,8 +7,8 @@ $result = pg_prepare($conn, "my_query", 'SELECT * FROM 'berita');
 // disini saya membuat table dengan nama mahasiswa
 $result = pg_execute($conn, "my_query",array());
 echo "<table border='1px'>
-<tr><td> nim</td>
-<td> nama</td></tr>
+<tr><td> idberita</td>
+<td> tanggal</td></tr>
 ";
 // kolom yang ada di table mahasiswa saya hanya ada 2 yaitu nim dan nama
 while ($row = pg_fetch_assoc($result))
