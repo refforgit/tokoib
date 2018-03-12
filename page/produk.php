@@ -2,7 +2,11 @@
 //cek_akses_langsung();
 ?>
 <section class="main-content">
-
+$result = pg_prepare($conn, "my_query", 'SELECT produk.*,stok.* from produk,stok
+				where produk.idproduk=stok.idproduk
+				 ');
+$result = pg_execute($conn, "my_query",array());
+	
 	<div class="row">
 		<div class="span9">
 			<ul class="thumbnails listing-products">
@@ -18,10 +22,14 @@ $query = " SELECT produk.*,stok.*
   where produk.idkategori='$id'
   and produk.idproduk=stok.idproduk";
 }
-$result = mysql_query($query) or die(mysql_error());
+$result = pg_prepare($conn, "my_query", 'SELECT produk.*,stok.*
+ from produk,stok
+  where produk.idkategori='$id'
+  and produk.idproduk=stok.idproduk');
+$result = pg_execute($conn, "my_query",array());
 $no = 1;
 //proses menampilkan data
-while($rows = mysql_fetch_object($result)) {
+while($row = pg_fetch_assoc($result)) {
 ?>
 				
 				<li class="span3">
