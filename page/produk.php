@@ -15,16 +15,13 @@
 $result = pg_execute($conn, "my_query",array());
 				$id = $_GET['idkategori'];
 if(!empty($id)){				
-$query = " SELECT produk.*,stok.*
- from produk,stok
-  where produk.idkategori='$id'
-  and produk.idproduk=stok.idproduk";
-}
 $result = pg_prepare($conn, "my_query", 'SELECT produk.*,stok.*
  from produk,stok
   where produk.idkategori='$id'
   and produk.idproduk=stok.idproduk');
 $result = pg_execute($conn, "my_query",array());
+}
+
 $no = 1;
 //proses menampilkan data
 while($row = pg_fetch_assoc($result)) {
