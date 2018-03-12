@@ -32,22 +32,22 @@ while($row = pg_fetch_assoc($result)) {
 						<span class="sale_tag"></span>
 						<a href="#">    <?php
 						if (!empty($rows -> foto)) {
-							echo "<img src='upload/produk/" . $rows -> foto . "' />";
+							echo "<img src='upload/produk/" .$rows['foto']. "' />";
 						}
 					?>	</a>
 						<br/>
-						<a href="#" class="title"><?php echo $rows->nama_produk?></a>
+						<a href="#" class="title"><?php echo $rows['nama_produk']?></a>
 						<br/>
-						<a href="#" class="category"><?php echo $rows->deskripsi?></a>
+						<a href="#" class="category"><?php echo $rows['deskripsi']?></a>
 						<p class="price">	
-							<?php echo format_rupiah($rows->harga_jual)?>
+							<?php echo format_rupiah($rows['harga_jual'])?>
 						</p>
 						<p>
-							<span class="label label-warning">Stok <?php echo   get_status_stok($rows->jumlah)?></span>
+							<span class="label label-warning">Stok <?php echo   get_status_stok($rows['jumlah'])?></span>
 						</p>
 						<?php
-						if(!empty($_SESSION['idpelanggan']) && ($rows->jumlah>0)){ ?>
-						<a href='index.php?mod=chart&pg=chart&action=add&id=<?php echo $rows->idproduk?>' class='btn btn-warning'><i class='icon-shopping-cart icon-white'></i>Beli</a>
+						if(!empty($_SESSION['idpelanggan']) && ($rows['jumlah']>0)){ ?>
+						<a href='index.php?mod=chart&pg=chart&action=add&id=<?php echo $rows['idproduk']?>' class='btn btn-warning'><i class='icon-shopping-cart icon-white'></i>Beli</a>
 						<?php } ?>
 					</div>
 				</li>
