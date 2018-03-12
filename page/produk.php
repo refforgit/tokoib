@@ -2,19 +2,17 @@
 //cek_akses_langsung();
 ?>
 <section class="main-content">
-$result = pg_prepare($conn, "my_query", 'SELECT produk.*,stok.* from produk,stok
-				where produk.idproduk=stok.idproduk
-				 ');
-$result = pg_execute($conn, "my_query",array());
+
 	
 	<div class="row">
 		<div class="span9">
 			<ul class="thumbnails listing-products">
 				
 				<?php 
-				$query = " SELECT produk.*,stok.* from produk,stok
+				$result = pg_prepare($conn, "my_query", 'SELECT produk.*,stok.* from produk,stok
 				where produk.idproduk=stok.idproduk
-				 ";
+				 ');
+$result = pg_execute($conn, "my_query",array());
 				$id = $_GET['idkategori'];
 if(!empty($id)){				
 $query = " SELECT produk.*,stok.*
