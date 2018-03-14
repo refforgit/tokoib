@@ -56,7 +56,7 @@ function list_kategori() {
 }
 function list_news($jumlah) {
 	
-		include('./inc/config.php');
+		include('../inc/config.php');
 	$result = pg_prepare($conn, "my_query2", "SELECT idberita,judul FROM berita order by tanggal desc limit $jumlah");
 	$query = pg_execute($conn, "my_query2",array());
 	while ($row = pg_fetch_assoc($query)) {
