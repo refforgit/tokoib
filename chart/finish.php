@@ -14,8 +14,8 @@ $kd_transaksi = $_GET['kd_transaksi'];
 $totalBayar = $_GET['total_bayar'];?>
 
 <h3> Selamat,Transaksi sukses di lakukan</h2>
-<h3> Kode Pesan :<?php $kd_transaksi;?></h2>
-<h3>Total Harga :<?php format_rupiah($totalBayar);?></h2>
+<h3> Kode Pesan :<?php echo $kd_transaksi;?></h2>
+<h3>Total Harga :<?php echo format_rupiah($totalBayar);?></h2>
 
 
 </h2>
