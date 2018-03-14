@@ -6,8 +6,8 @@
  */?>
 <?php
 function kd_transaksi() {
-$conn = pg_connect("host=localhost port=5432 dbname=postgres user='postgres'
-password='Gibranxc0d3'") or die('Could not connect: ' . pg_last_error()); 
+$conn = pg_connect("host=ec2-54-235-66-24.compute-1.amazonaws.com port=5432 dbname=d8ig8ica3tatsa user='cfohoabinecfoa'
+password='aec261c1978f6fa27bf7eb4dd625847f7ba7522e2e957dadc1aeb4f6904221f4'") or die('Could not connect: ' . pg_last_error()); 
 $qu = pg_query($conn, "select noinvoice FROM invoice ORDER BY noinvoice desc limit 1");
 $liatk = pg_fetch_assoc($qu);
 $xc = $liatk['noinvoice'];
@@ -127,8 +127,8 @@ function insertToDB($kd_transaksi, $idpelanggan, $totalbayar) {
 			$contents[$item] = (isset($contents[$item])) ? $contents[$item] + 1 : 1;
 		}
 		$tgl = date('d-M-Y');
-		$conn = pg_connect("host=localhost port=5432 dbname=postgres user='postgres'
-password='Gibranxc0d3'") or die('Could not connect: ' . pg_last_error()); 
+		$conn = pg_connect("host=ec2-54-235-66-24.compute-1.amazonaws.com port=5432 dbname=d8ig8ica3tatsa user='cfohoabinecfoa'
+password='aec261c1978f6fa27bf7eb4dd625847f7ba7522e2e957dadc1aeb4f6904221f4'") or die('Could not connect: ' . pg_last_error()); 
 		$qins=pg_query($conn, "insert into invoice (noinvoice,tanggal,totalbayar,idpelanggan) 
 		values( '$kd_transaksi', '$tgl','$totalbayar','$idpelanggan')") or die(pg_result_error());
 		//echo "SQL transaksi:".$sql_transaksi;
