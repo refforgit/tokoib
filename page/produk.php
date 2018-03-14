@@ -9,29 +9,30 @@
 			<ul class="thumbnails listing-products">
 				
 				<?php 
+				include('inc/config.php');
 				$result = pg_prepare($conn, "my_query", 'SELECT produk.*,stok.* from produk,stok
 				where produk.idproduk=stok.idproduk
 				 ');
-$result = pg_execute($conn, "my_query",array());
+				$result = pg_execute($conn, "my_query",array());
 				$id = $_GET['idkategori'];
+				
 if(!empty($id)){				
-$result = pg_prepare($conn, "my_query", 'SELECT produk.*,stok.*
- from produk,stok
-  where produk.idkategori='$id'
-  and produk.idproduk=stok.idproduk');
-$result = pg_execute($conn, "my_query",array());
+$result = pg_prepare($conn, "my_querys", "SELECT produk.*,stok.* from produk,stok
+				where produk.idkategori='$id' and produk.idproduk=stok.idproduk");
+$result = pg_execute($conn, "my_querys",array());
+
 }
 
 $no = 1;
 //proses menampilkan data
-while($row = pg_fetch_assoc($result)) {
+while($rows = pg_fetch_assoc($result)) {
 ?>
 				
 				<li class="span3">
 					<div class="product-box" >
 						<span class="sale_tag"></span>
 						<a href="#">    <?php
-						if (!empty($rows -> foto)) {
+						if (!empty($rows['foto'])) {
 							echo "<img src='upload/produk/" .$rows['foto']. "' />";
 						}
 					?>	</a>

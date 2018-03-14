@@ -4,7 +4,6 @@
  * Candra adi putra <candraadiputra@gmail.com>
  * last edit: 15 okt 2013
  */
- 
 function query($qry) {
 	$result = mysql_query($qry) or die("Gagal melakukan query pada :
 	 <br>$qry<br><br>Kode Salah : <br>&nbsp;&nbsp;&nbsp;" . mysql_error() . "!");
@@ -45,22 +44,24 @@ function cek_status_login($param){
 	}
 }
 function list_kategori() {
+	include('inc/config.php');
+	$result = pg_prepare($conn, "my_query1", 'SELECT idkategori, nama_kategori FROM kategori');
+// disini saya membuat table dengan nama mahasiswa
+	$query = pg_execute($conn, "my_query1",array());	
+	while ($row = pg_fetch_assoc($query)) {
 	
-		
-	$query = query("SELECT idkategori, nama_kategori FROM kategori ");
-	while ($row = mysql_fetch_row($query)) {
-	
-			echo "<li><a href='index.php?mod=page&pg=produk&idkategori=".$row[0]."'>" . ucwords($row[1]) . "</a> </li>";
+			echo "<li><a href='index.php?mod=page&pg=produk&idkategori=".$row['idkategori']."'>" . ucwords($row['nama_kategori']) . "</a> </li>";
 		
 	}
 }
 function list_news($jumlah) {
 	
-		
-	$query = query("SELECT idberita,judul FROM berita order by tanggal desc limit $jumlah");
-	while ($row = mysql_fetch_row($query)) {
+		include('inc/config.php');
+	$result = pg_prepare($conn, "my_query2", "SELECT idberita,judul FROM berita order by tanggal desc limit $jumlah");
+	$query = pg_execute($conn, "my_query2",array());
+	while ($row = pg_fetch_assoc($query)) {
 	
-			echo "<li><a href='index.php?mod=page&pg=berita&idberita=".$row[0]."'>" . ucwords($row[1]) . "</a> </li>";
+			echo "<li><a href='index.php?mod=page&pg=berita&idberita=".$row['idberita']."'>" . ucwords($row['judul']) . "</a> </li>";
 		
 	}
 }

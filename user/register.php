@@ -53,7 +53,7 @@
 									<div class="control-group">
 		<label class="control-label" for="nama">Nama pelanggan</label>
 		<div class="controls">
-			<input type="text" name='nama' value='<?php echo $data->nama?>'class='required'
+			<input type="text" name='nama' value='<?php echo $data['nama']?>'class='required'
 			>
 		</div>
 	</div>
@@ -70,35 +70,35 @@
 	<div class="control-group">
 		<label class="control-label" >email</label>
 		<div class="controls">
-			<input type="text" name='email' id='email' value='<?php echo $data->email?>' class='required'
+			<input type="text" name='email' id='email' value='<?php echo $data['email']?>' class='required'
 			>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" >Password</label>
 		<div class="controls">
-			<input type="password" name='password' id='password' value='<?php echo $data->password?>' class='required'
+			<input type="password" name='password' id='password' value='<?php echo $data['password']?>' class='required'
 			>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" >telp</label>
 		<div class="controls">
-			<input type="text" name='telp' id='telp' value='<?php echo $data->telp?>' class='required'
+			<input type="text" name='telp' id='telp' value='<?php echo $data['telp']?>' class='required'
 			>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" >Kota</label>
 		<div class="controls">
-			<input type="text" name='kota' id='kota' value='<?php echo $data->kota?>' class='required'
+			<input type="text" name='kota' id='kota' value='<?php echo $data['kota']?>' class='required'
 			>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" >Kode Post</label>
 		<div class="controls">
-			<input type="text" name='kodepos' id='kodepos' value='<?php echo $data->kodepos?>' class='required'
+			<input type="text" name='kodepos' id='kodepos' value='<?php echo $data['kodepos']?>' class='required'
 			>
 		</div>
 	</div>
@@ -106,7 +106,7 @@
 		<label class="control-label" for="alamat">Alamat</label>
 		<div class="controls">
 			<textarea name='alamat' class="input-xlarge">
-					<?php echo trim($data->alamat)?>
+					<?php echo trim($data['alamat'])?>
 				</textarea>
 		</div>
 	</div>

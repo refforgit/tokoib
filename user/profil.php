@@ -17,25 +17,27 @@ cek_status_login($_SESSION['idpelanggan']);
 		<tbody>
 <?php
 $id=$_SESSION['idpelanggan'];
-$query="SELECT pelanggan.*
+$result = pg_prepare($conn, "my_queryp", "SELECT pelanggan.*
  from pelanggan
- where idpelanggan='$id'";
-$result=mysql_query($query) or die(mysql_error());
+ where idpelanggan='$id'");
+// disini saya membuat table dengan nama mahasiswa
+$query = pg_execute($conn, "my_queryp",array());
+
 $no=1;
 //proses menampilkan data
-while($rows=mysql_fetch_object($result)){
+while($rows = pg_fetch_assoc($query)){
 
 			?>
 		
 			
-				<tr><td>Nama </td><td><?php echo $rows -> nama; ?></td></td></tr>
+				<tr><td>Nama </td><td><?php echo $rows['nama']; ?></td></td></tr>
 			
-			<tr><td>Email </td><td><?php echo $rows -> email; ?></td></td></tr>
-				<tr><td>Telepon </td><td><?php echo $rows -> telp; ?></td></td></tr>
-					<tr><td>Alamat </td><td><?php echo $rows -> alamat; ?></td></td></tr>
-						<tr><td>Kota </td><td><?php echo $rows -> kota; ?></td></td></tr>
-							<tr><td>Kode Post </td><td><?php echo $rows -> kodepos; ?></td></td></tr>
-								<tr><td> Tanggal Daftar</td><td><?php echo tampil_tanggal($rows -> tanggal_daftar); ?></td></td></tr>
+			<tr><td>Email </td><td><?php echo $rows['email']; ?></td></td></tr>
+				<tr><td>Telepon </td><td><?php echo $rows['telp']; ?></td></td></tr>
+					<tr><td>Alamat </td><td><?php echo $rows['alamat']; ?></td></td></tr>
+						<tr><td>Kota </td><td><?php echo $rows['kota']; ?></td></td></tr>
+							<tr><td>Kode Post </td><td><?php echo $rows['kodepos']; ?></td></td></tr>
+								<tr><td> Tanggal Daftar</td><td><?php echo tampil_tanggal($rows['tanggal_daftar']); ?></td></td></tr>
 			
 			
 			

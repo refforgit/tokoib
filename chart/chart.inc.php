@@ -5,13 +5,16 @@
  * last edit: 15 okt 2013
  */?>
 <?php
-
 function kd_transaksi() {
-	$kode_temp = fetch_row("SELECT noinvoice FROM invoice ORDER BY noinvoice DESC LIMIT 0,1");
-	if ($kode_temp == '')
+$conn = pg_connect("host=localhost port=5432 dbname=postgres user='postgres'
+password='Gibranxc0d3'") or die('Could not connect: ' . pg_last_error()); 
+$qu = pg_query($conn, "select noinvoice FROM invoice ORDER BY noinvoice desc limit 1");
+$liatk = pg_fetch_assoc($qu);
+$xc = $liatk['noinvoice'];
+	if ($xc == '')
 		$kode = "T00001";
 	else {
-		$jum = substr($kode_temp, 1, 6);
+		$jum = substr($xc, 1, 6);
 		$jum++;
 		if ($jum <= 9)
 			$kode = "T0000" . $jum;
@@ -80,14 +83,15 @@ function showchart() {
 		$output[] = '<form action="index.php?mod=chart&pg=chart&action=update" method="post" id="chart">';
 		$no = 1;
 		foreach ($contents as $id => $qty) {
-			$sql = "SELECT produk.*,stok.harga_jual from produk,stok WHERE produk.idproduk = '$id'";
-			$result = mysql_query($sql);
-			$row = mysql_fetch_object($result);
+		include('inc/config.php');
+			
+			$qu = pg_query($conn, "SELECT produk.*,stok.harga_jual from produk,stok WHERE produk.idproduk = stok.idproduk and produk.idproduk = '$id'");
+			$row = pg_fetch_object($qu);
 			$output[] = '<tr><td>' . $no . '</td>';
 		
-			$output[] = '<td><img src=\'upload/produk/' . $row ->foto ;
+			$output[] = '<td><img src=\'upload/produk/' .$row->foto ;
 			
-			$output[] = '\' width=\'128px\' height=\'128px\'><br> '.$row ->nama_produk. 
+			$output[] = '\' width=\'128px\' height=\'128px\'><br> '.$row->nama_produk. 
 			
 			'</td><td>' . format_rupiah($row -> harga_jual) . '</td>';
 			$output[] = '<td><input type="text" class="input-mini" name="qty' . $id . '" value="' . $qty . '"  /></td>';
@@ -122,17 +126,18 @@ function insertToDB($kd_transaksi, $idpelanggan, $totalbayar) {
 		foreach ($items as $item) {
 			$contents[$item] = (isset($contents[$item])) ? $contents[$item] + 1 : 1;
 		}
-
-		$sql_transaksi = "insert into invoice (noinvoice,tanggal,totalbayar,idpelanggan) 
-		values( '$kd_transaksi', now(),'$totalbayar','$idpelanggan')";
+		$tgl = date('d-M-Y');
+		$conn = pg_connect("host=localhost port=5432 dbname=postgres user='postgres'
+password='Gibranxc0d3'") or die('Could not connect: ' . pg_last_error()); 
+		$qins=pg_query($conn, "insert into invoice (noinvoice,tanggal,totalbayar,idpelanggan) 
+		values( '$kd_transaksi', '$tgl','$totalbayar','$idpelanggan')") or die(pg_result_error());
 		//echo "SQL transaksi:".$sql_transaksi;
-		mysql_query($sql_transaksi) or die(mysql_error());
 		foreach ($contents as $id => $qty) {
 
 			$sql = "insert into transaksi(noinvoice,idproduk,jumlah)
 			values('$kd_transaksi','$id','$qty')";
 			//		echo "SQL transaksi:".$sql;
-			$result = mysql_query($sql) or die(mysql_error());
+			$result = pg_query($conn, $sql) or die(pg_result_error());
 		}
 	} else {
 		$output[] = '<p>Keranjang belanja masih kosong.</p>';

@@ -8,25 +8,25 @@
 ?>
 <section class="main-content">
 
-	<div class="row">
+	<div class="row" align="center">
 		<div class="span9">
 <?php $id = $_GET['idberita'];
-$query = " SELECT * from berita where idberita='$id'";
-
-$result = mysql_query($query) or die(mysql_error());
+include('inc/config.php');
+	$result = pg_prepare($conn, "my_query", " SELECT * from berita where idberita='$id'");
+	$query = pg_execute($conn, "my_query",array());
 $no = 1;
 //proses menampilkan data
-$rows = mysql_fetch_object($result);
+$rows = pg_fetch_assoc($query);
 ?>
 
    
-        <h2> 
-        	<?=$rows->judul?></strong></h2>
-        	 <span class="label label-success"><?=tampil_tanggal($rows -> tanggal); ?></span>
+        <h2 align="center"> 
+        	<?php echo $rows['judul']?></strong></h2>
+        	 <span class="label label-success" ><?php echo $rows['tanggal']; ?></span>
         	 <br/>
     <?php
-	if (!empty($rows -> gambar)) {
-		echo "<img src='upload/berita/" . $rows -> gambar . "' />";
+	if (!empty($rows['gambar'])) {
+		echo "<img src='upload/berita/" . $rows['gambar'] . "' />";
 	}
 ?>	
 	
@@ -35,7 +35,7 @@ $rows = mysql_fetch_object($result);
       
      
       <p> 
-      <?=$rows -> isi ?>
+      <?php $rows['isi'] ?>
         </p>
       
 		
