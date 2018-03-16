@@ -50,7 +50,7 @@ $total+=$total+$subtotal;
 					<?php echo $rows -> nama_produk; ?></td>
 			<td><?php echo format_rupiah($rows -> harga_jual); ?></td>
 			<td><?php echo $rows -> jumlah; ?></td>
-			<td class='pull-right'><? echo format_rupiah($subtotal); ?></td>
+			<td class='pull-right'><?php echo format_rupiah($subtotal); ?></td>
 			
 				
 				
@@ -59,7 +59,7 @@ $total+=$total+$subtotal;
 			<?php	$no++;
 				}
 			?>
-<tr><td>Total</td><td colspan='4'  ><p class='pull-right'><?=format_rupiah($total);?></p></td></tr>
+<tr><td>Total</td><td colspan='4'  ><p class='pull-right'><?php echo format_rupiah($total);?></p></td></tr>
 			
 		</tbody>
 	</table>
