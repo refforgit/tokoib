@@ -18,7 +18,7 @@ cek_status_login($_SESSION['idpelanggan']);
 
 	<h4 id="headings"> Detail Invoice dengan nomor <?=$_GET['id']?></h4>
 	<!--<a href='index.php?mod=produk&pg=peta'><i class="icon-map-marker"></i>Map View</a>-->
-	<table  class="table table-striped">
+	<table  class="table table-striped" >
 		
 			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td class='pull-right'><b>Subtotal</b></td>
 		
@@ -58,28 +58,6 @@ $total+=$total+$subtotal;
 			
 		</tbody>
 	</table>
-		
-			<table  class="table table-striped">
-		
-			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td class='pull-right'><b>Subtotal</b></td>
-		
-<tbody>
-
-<tr>
-				<td>1</td>
-			
-				<td>
-					1
-				</td>
-					<td>1</td>
-			        <td>1</td>
-			        <td>1</td>
-			        <td class='pull-right'>1</td>
-			        <?php	$no++;
-				}
-			?>
-<tr><td>Total</td><td colspan='6' ><p class='pull-right'>1</p></td></tr>
-</table>
 			
 </div>
 
