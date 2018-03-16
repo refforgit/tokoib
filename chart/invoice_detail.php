@@ -19,9 +19,9 @@ cek_status_login($_SESSION['idpelanggan']);
 	<h4 id="headings"> Detail Invoice dengan nomor <?=$_GET['id']?></h4>
 	<!--<a href='index.php?mod=produk&pg=peta'><i class="icon-map-marker"></i>Map View</a>-->
 	<table  class="table table-striped">
-		<thead>
+		
 			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td class='pull-right'><b>Subtotal</b></td>
-		</thead>
+		
 		<tbody>
 <?php
 $id=$_GET['id'];
