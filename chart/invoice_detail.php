@@ -20,9 +20,8 @@ cek_status_login($_SESSION['idpelanggan']);
 	<!--<a href='index.php?mod=produk&pg=peta'><i class="icon-map-marker"></i>Map View</a>-->
 	<table  border="1">
 		
-			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td class='pull-right'><b>Subtotal</b></td>
+			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td><b>Subtotal</b></td>
 		
-		<tbody>
 <?php
 $id=$_GET['id'];
 include ('inc/config.php');
@@ -56,7 +55,7 @@ $total+=$total+$subtotal;
 			?>
 <tr><td>Total</td><td colspan='6'  ><p class='pull-right'><?php echo format_rupiah($total);?></p></td></tr>
 			
-		</tbody>
+		
 	</table>
 			
 </div>
