@@ -25,17 +25,18 @@ cek_status_login($_SESSION['idpelanggan']);
 		<tbody>
 <?php
 $id=$_GET['id'];
+include ('inc/config.php');
 $query="SELECT produk.*,transaksi.* ,stok.harga_jual
 from produk,transaksi,stok 
 where produk.idproduk=transaksi.idproduk
 and produk.idproduk=stok.idproduk
 and transaksi.noinvoice='$id'";
 
-$result=mysql_query($query) or die(mysql_error());
+$result=pg_query($conn,$query) or die(pg_result_error());
 $no=1;
 //proses menampilkan data
 $total=0;
-while($rows=mysql_fetch_object($result)){
+while($rows=pg_fetch_object($result)){
 $subtotal= $rows -> harga_jual* $rows -> jumlah;
 $total+=$total+$subtotal;
 			?>
