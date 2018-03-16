@@ -20,7 +20,7 @@ cek_status_login($_SESSION['idpelanggan']);
 	<!--<a href='index.php?mod=produk&pg=peta'><i class="icon-map-marker"></i>Map View</a>-->
 	<table  class="table table-striped">
 		<thead>
-			<th><b>No </b><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td class='pull-right'><b>Subtotal</b></td></th>
+			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td class='pull-right'><b>Subtotal</b></td>
 		</thead>
 		<tbody>
 <?php
@@ -54,7 +54,7 @@ $total+=$total+$subtotal;
 			<?php	$no++;
 				}
 			?>
-<tr><td>Total</td><td colspan='4'  ><p class='pull-right'><?php echo format_rupiah($total);?></p></td></tr>
+<tr><td>Total</td><td colspan='6'  ><p class='pull-right'><?php echo format_rupiah($total);?></p></td></tr>
 			
 		</tbody>
 	</table>
