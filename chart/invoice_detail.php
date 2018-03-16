@@ -51,11 +51,6 @@ $total+=$total+$subtotal;
 			<td><?php echo format_rupiah($rows -> harga_jual); ?></td>
 			<td><?php echo $rows -> jumlah; ?></td>
 			<td class='pull-right'><?php echo format_rupiah($subtotal); ?></td>
-			
-				
-				
-			</tr>
-			
 			<?php	$no++;
 				}
 			?>
