@@ -25,15 +25,16 @@ cek_status_login($_SESSION['idpelanggan']);
 <?php
 
 $id=$_SESSION['idpelanggan'];
+include ('inc/config.php');
 $query="SELECT invoice.*,pelanggan.nama
  from invoice,pelanggan
  where invoice.idpelanggan=pelanggan.idpelanggan
  and pelanggan.idpelanggan='$id'
 ";
-$result=mysql_query($query) or die(mysql_error());
+$result=pg_query($conn,$query) or die(pg_result_error());
 $no=1;
 //proses menampilkan data
-while($rows=mysql_fetch_object($result)){
+while($rows=pg_fetch_object($result)){
 
 			?>
 			<tr>
