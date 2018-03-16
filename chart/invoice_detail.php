@@ -18,7 +18,7 @@ cek_status_login($_SESSION['idpelanggan']);
 
 	<h4 id="headings"> Detail Invoice dengan nomor <?=$_GET['id']?></h4>
 	<!--<a href='index.php?mod=produk&pg=peta'><i class="icon-map-marker"></i>Map View</a>-->
-	<table  border="1">
+	<table  class="table table-striped">
 		
 			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td><b>Subtotal</b></td>
 		
@@ -49,7 +49,7 @@ $total+=$total+$subtotal;
 					<td><?php echo $rows -> nama_produk; ?></td>
 			<td><?php echo format_rupiah($rows -> harga_jual); ?></td>
 			<td><?php echo $rows -> jumlah; ?></td>
-			<td class='pull-right'><?php echo format_rupiah($subtotal); ?></td>
+			<td ><?php echo format_rupiah($subtotal); ?></td>
 			<?php	$no++;
 				}
 			?>
