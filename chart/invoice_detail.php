@@ -46,8 +46,8 @@ $total+=$total+$subtotal;
 			
 				<td>
 					<img src='upload/produk/<?=$rows ->foto ?>'  width='128px' height='128px' />
-					<br>
-					<?php echo $rows -> nama_produk; ?></td>
+				</td>
+					<td><?php echo $rows -> nama_produk; ?></td>
 			<td><?php echo format_rupiah($rows -> harga_jual); ?></td>
 			<td><?php echo $rows -> jumlah; ?></td>
 			<td class='pull-right'><?php echo format_rupiah($subtotal); ?></td>
