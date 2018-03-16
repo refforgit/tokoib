@@ -58,18 +58,8 @@ $total+=$total+$subtotal;
 			
 		</tbody>
 	</table>
-			
-</div>
-
-<?php
-include('inc/sidebar-front.php');
-?>
-	</div>
-	
-	
-</section>	
-
-<table  class="table table-striped">
+		
+			<table  class="table table-striped">
 		
 			<td><b>No </b></td><td><b>Gambar </b></td><td><b>Nama </b></td><td><b>harga satuan</b></td><td><b>Jumlah</b></td><td class='pull-right'><b>Subtotal</b></td>
 		
@@ -90,3 +80,13 @@ include('inc/sidebar-front.php');
 			?>
 <tr><td>Total</td><td colspan='6' ><p class='pull-right'>1</p></td></tr>
 </table>
+			
+</div>
+
+<?php
+include('inc/sidebar-front.php');
+?>
+	</div>
+	
+	
+</section>
