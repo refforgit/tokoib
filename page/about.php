@@ -11,7 +11,7 @@
 
 	<div class="row">
 		<div class="span9">
-<h2> Info Tentang Candralab Commerce alikan </h2>
+<h2> Info Tentang Candralab Commerce skmbkabdkabsj </h2>
 CandraLab Commerce merupakan salah satu perusahaan
  kecil yang bergerak dalam bidang penjualan produk berupa pakaian, 
  alat elekronik dan buku
